@@ -10,25 +10,30 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Get files
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install Node
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - name: Install packages
+      - name: Install dependencies
         run: npm install
 
-      - name: Build website
+      - name: Build
         run: npm run build
 
-      - name: Upload site files
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
@@ -36,6 +41,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+
     steps:
-      - name: Publish website
+      - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
