@@ -1,0 +1,5 @@
+
+User-agent: *
+Allow: /
+
+Sitemap: https://alsafwa-school.vercel.app/sitemap.xml
