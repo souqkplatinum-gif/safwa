@@ -6,7 +6,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, '.', '');
 
   return {
-    base: '/safwa/', // ✅ ده الحل كله
+    base: '/safwa/', //  ده الحل كله
 
     server: {
       port: 3000,
