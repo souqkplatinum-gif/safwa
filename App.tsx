@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   HashRouter as Router,
   Routes,
@@ -10,16 +10,7 @@ import {
 import {
   Menu,
   X,
-  Phone,
-  Mail,
-  MapPin,
-  Facebook,
-  Instagram,
-  Twitter,
   ChevronUp,
-  Star,
-  Share2,
-  Check,
 } from 'lucide-react';
 
 import {
@@ -30,12 +21,15 @@ import {
   SCHOOL_EMAIL,
 } from './constants';
 
+// ✅ استيراد صفحة Home الحقيقية (الديمو)
+import Home from './pages/Home';
+
 /* =======================
-   SIMPLE PAGES (TEMP)
+   TEMP PAGES
 ======================= */
 
 const PageWrapper = ({ title }: { title: string }) => (
-  <div className="container mx-auto px-4 py-20 text-center">
+  <div className="container mx-auto px-4 py-24 text-center">
     <h1 className="text-4xl font-black text-[#161e46] mb-6">{title}</h1>
     <p className="text-lg text-gray-600">
       محتوى صفحة {title} سيتم استكماله قريبًا.
@@ -43,7 +37,6 @@ const PageWrapper = ({ title }: { title: string }) => (
   </div>
 );
 
-const Home = () => <PageWrapper title="الرئيسية" />;
 const About = () => <PageWrapper title="من نحن" />;
 const Stages = () => <PageWrapper title="المراحل الدراسية" />;
 const Services = () => <PageWrapper title="الخدمات" />;
@@ -127,9 +120,12 @@ const App = () => {
     <Router>
       <Header />
 
-      <main className="pt-20 min-h-screen">
+      <main className="pt-16 min-h-screen">
         <Routes>
+          {/* ✅ الديمو الإعلاني الحقيقي */}
           <Route path="/" element={<Home />} />
+
+          {/* صفحات مؤقتة */}
           <Route path="/about" element={<About />} />
           <Route path="/stages" element={<Stages />} />
           <Route path="/services" element={<Services />} />
